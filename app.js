@@ -35,9 +35,9 @@ app.use(helmet());
 app.use(cors());
 app.use(xss());
 
-app.get("/", (req, res) => {
-  res.send("jobs api application");
-});
+// app.get("/", (req, res) => {
+//   res.json({ mes: "app is running on vercel" });
+// });
 
 // routes
 app.use("/api/v1/auth", authRouter);
@@ -51,12 +51,13 @@ const port = process.env.PORT || 3000;
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
-    app.listen(port, () =>
-      console.log(`Server is listening on port ${port}...`)
-    );
+    // app.listen(port, () =>
+    //   console.log(`Server is listening on port ${port}...`)
+    // );
   } catch (error) {
     console.log(error);
   }
 };
 
 start();
+module.exports = app;
